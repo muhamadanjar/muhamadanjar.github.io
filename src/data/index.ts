@@ -1,8 +1,8 @@
 // Data sections
 export const skills = [
   { name: 'Frontend', items: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Vite'] },
-  { name: 'Backend', items: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'REST APIs'] },
-  { name: 'Tools', items: ['Git', 'Docker', 'Figma', 'Linux', 'AWS'] }
+  { name: 'Backend', items: ['Node.js', 'Express', 'PostgreSQL', 'Python', 'REST APIs', 'Odoo'] },
+  { name: 'Tools', items: ['Git', 'Docker', 'Linux', 'AWS'] }
 ];
 
 export const experience = [
@@ -47,5 +47,32 @@ export const projects = [
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop',
     description: 'Interactive dashboard for visualizing crypto and stock portfolio metrics.',
     tags: ['React', 'TypeScript', 'Recharts', 'Tailwind CSS']
+  }
+];
+
+export const blogPosts = [
+  {
+    id: 1,
+    title: 'Modern Web Development Trends in 2026',
+    excerpt: 'Exploring the shift towards AI-first applications and the return to server-side rendering with frameworks like Remix and Next.js.',
+    date: 'March 15, 2026',
+    category: 'Technology',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1000&auto=format&fit=crop'
+  },
+  {
+    id: 2,
+    title: 'Mastering GSAP Animations in React',
+    excerpt: 'A comprehensive guide to creating high-performance smooth animations in modern React applications using the new useGSAP hook.',
+    date: 'February 28, 2026',
+    category: 'Tutorial',
+    image: 'https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=1000&auto=format&fit=crop'
+  },
+  {
+    id: 3,
+    title: 'The Future of TypeScript',
+    excerpt: 'Deep dive into incoming features like context-sensitive auto-imports and enhanced pattern matching support in the next major release.',
+    date: 'January 10, 2026',
+    category: 'Coding',
+    image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=1000&auto=format&fit=crop'
   }
 ];
