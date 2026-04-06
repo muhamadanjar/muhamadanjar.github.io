@@ -1,0 +1,351 @@
+{
+  "personal": {
+    "name": "Muhamad Anjar Pangestu",
+    "degree": "S.Kom",
+    "title": "Full Stack Developer",
+    "subtitle": "WebGIS Specialist",
+    "phone": ["+62 878-7042-7227", "+62 857-7451-5356"],
+    "email": ["arvanria@gmail.com", "muhamadanjar@live.com"],
+    "blog": "https://muhamadanjar.medium.com",
+    "address": {
+      "street": "Kp. Caringin RT 03 RW 02",
+      "village": "Kel. Caringin",
+      "district": "Kec. Caringin",
+      "regency": "Kab. Bogor",
+      "province": "Jawa Barat",
+      "postalCode": "16730",
+      "country": "Indonesia"
+    },
+    "dateOfBirth": "1992-11-04",
+    "placeOfBirth": "Bogor",
+    "gender": "Male",
+    "maritalStatus": "Married",
+    "religion": "Islam"
+  },
+
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "items": ["PHP", "Python", "JavaScript", "Dart"]
+    },
+    {
+      "category": "Frameworks & Libraries",
+      "items": ["Laravel", "CodeIgniter", "Django", "Next.js", "React Native", "Flutter", "Ionic", "Odoo", "Vue.js"]
+    },
+    {
+      "category": "Databases",
+      "items": ["MySQL", "PostgreSQL", "SQL Server"]
+    },
+    {
+      "category": "GIS & WebGIS",
+      "items": ["ArcGIS", "Geoserver", "OpenLayers", "Leaflet", "Esri CityEngine"]
+    },
+    {
+      "category": "Frontend",
+      "items": ["CSS3", "Bootstrap", "TailwindCSS"]
+    },
+    {
+      "category": "Tools & Design",
+      "items": ["Photoshop", "Balsamiq Mockup", "Microsoft Office"]
+    },
+    {
+      "category": "Operating Systems",
+      "items": ["Windows", "Linux", "Mac OS"]
+    }
+  ],
+
+  "experience": [
+    {
+      "year": "2025",
+      "title": "Client Portal Development",
+      "titleId": "Pembuatan Client Portal",
+      "tech": ["Next.js", "PostgreSQL"]
+    },
+    {
+      "year": "2025",
+      "title": "Silent Center Development",
+      "titleId": "Pengembangan Silent Center",
+      "tech": ["Laravel", "PostgreSQL"]
+    },
+    {
+      "year": "2024",
+      "title": "Kemendagri Monitoring Dashboard",
+      "titleId": "Dashboard Monitoring Kemendagri",
+      "tech": ["Next.js"]
+    },
+    {
+      "year": "2024",
+      "title": "Silent Center Development",
+      "titleId": "Pengembangan Silent Center",
+      "tech": ["Laravel", "PostgreSQL"]
+    },
+    {
+      "year": "2023",
+      "title": "Silent Center Development",
+      "titleId": "Pengembangan Silent Center",
+      "tech": ["Laravel", "PostgreSQL"]
+    },
+    {
+      "year": "2023",
+      "title": "NFT Token Application Maintenance",
+      "titleId": "Maintenance Aplikasi NFT Token",
+      "tech": ["Laravel", "MySQL"]
+    },
+    {
+      "year": "2023",
+      "title": "Komitel Portal Maintenance",
+      "titleId": "Maintenance Aplikasi Portal Komitel",
+      "tech": ["Python", "Odoo"]
+    },
+    {
+      "year": "2022",
+      "title": "Silent Center Application Development",
+      "titleId": "Pengembangan Aplikasi Silent Center",
+      "tech": ["Laravel", "PostgreSQL", "Flutter"]
+    },
+    {
+      "year": "2022",
+      "title": "Siberalam Website — Natural Resources Information System, Sukabumi",
+      "titleId": "Website Siberalam (SIM Sumber Daya Alam Sukabumi)",
+      "tech": ["Django", "Next.js", "React"]
+    },
+    {
+      "year": "2022",
+      "title": "Makarim Internal Application Development",
+      "titleId": "Pengembangan Aplikasi Internal Makarim",
+      "tech": ["CodeIgniter"]
+    },
+    {
+      "year": "2022",
+      "title": "Komitel ERP Application",
+      "titleId": "Pembuatan Aplikasi ERP Komitel",
+      "tech": ["Odoo"]
+    },
+    {
+      "year": "2022",
+      "title": "Portal ERP Application",
+      "titleId": "Pembuatan Aplikasi ERP Portal",
+      "tech": ["Odoo"]
+    },
+    {
+      "year": "2022",
+      "title": "Stuntman NFT Community Android App",
+      "titleId": "Pembuatan Aplikasi Android Stuntman NFT Community",
+      "tech": ["Flutter", "Laravel"]
+    },
+    {
+      "year": "2022",
+      "title": "SIDIK V5 Application Development",
+      "titleId": "Pengembangan Aplikasi SIDIK V5",
+      "tech": ["Vue.js", "Python"]
+    },
+    {
+      "year": "2021",
+      "title": "Spatial Planning Information System — Karimun Regency (Web & Android)",
+      "titleId": "SIM Tata Ruang Kabupaten Karimun (Web & Android)",
+      "tech": ["Laravel", "PostgreSQL", "Geoserver"]
+    },
+    {
+      "year": "2021",
+      "title": "Manpower Information System — Sukabumi Regency (Silent Center)",
+      "titleId": "SIM Tenaga Kerja Kabupaten Sukabumi (Silent Center)",
+      "tech": ["Laravel", "PostgreSQL"]
+    },
+    {
+      "year": "2020",
+      "title": "Piko Application Maintenance",
+      "titleId": "Maintenance Aplikasi Piko",
+      "tech": ["Laravel", "MySQL", "SQL Server"]
+    },
+    {
+      "year": "2020",
+      "title": "SIMTARU WebGIS Application — Bogor City",
+      "titleId": "Pembuatan Aplikasi WebGIS SIMTARU Kota Bogor",
+      "tech": ["Laravel", "OpenLayers", "Geoserver", "PostgreSQL"]
+    },
+    {
+      "year": "2020",
+      "title": "Green Open Space WebGIS Application",
+      "titleId": "Pembuatan Aplikasi GIS Ruang Terbuka Hijau Berbasis Web",
+      "tech": ["Laravel", "PostgreSQL", "Geoserver"]
+    },
+    {
+      "year": "2020",
+      "title": "3D City Scale Model — Bogor City",
+      "titleId": "Membuat Aplikasi Maket Kota Bogor",
+      "tech": ["Esri CityEngine Web", "Laravel", "Geoserver"]
+    },
+    {
+      "year": "2019",
+      "title": "Device Monitoring Application (Tracker)",
+      "titleId": "Pembuatan Aplikasi Monitoring Device (Treker)",
+      "tech": ["PHP Framework", "CodeIgniter", "PostgreSQL"]
+    },
+    {
+      "year": "2019",
+      "title": "Jenius Application Monitoring Dashboard",
+      "titleId": "Pembuatan Dashboard Monitoring Aplikasi Jenius",
+      "tech": ["PHP Framework", "CodeIgniter", "MySQL"]
+    },
+    {
+      "year": "2018",
+      "title": "Manpower Information System — Sukabumi Regency",
+      "titleId": "Pembuatan SIM Tenaga Kerja Kabupaten Sukabumi",
+      "tech": ["PHP Framework", "PostgreSQL"]
+    },
+    {
+      "year": "2018",
+      "title": "Road Condition Web Application — Baubau City",
+      "titleId": "Pembuatan Database dan Aplikasi Kondisi Jalan Berbasis Web di Kab. Baubau",
+      "tech": ["PHP Framework", "PostgreSQL"]
+    },
+    {
+      "year": "2018",
+      "title": "City Asset GIS Web Application — Bogor City",
+      "titleId": "Membuat Aplikasi GIS Aset Kota Bogor Berbasis Web",
+      "tech": ["Laravel", "PostgreSQL", "Geoserver", "OpenLayers 4"]
+    },
+    {
+      "year": "2017",
+      "title": "Web-Based Proposal Application (E-Plannar)",
+      "titleId": "Pembuatan Aplikasi Proposal Berbasis Web (E-Plannar)",
+      "tech": ["Laravel", "MySQL"]
+    },
+    {
+      "year": "2017",
+      "title": "Employee Attendance API Database Update",
+      "titleId": "Updating Database API Absensi Karyawan",
+      "tech": ["PHP Framework", "CodeIgniter"]
+    },
+    {
+      "year": "2017",
+      "title": "Street Lighting Information System & Android Reporting App — Sukabumi",
+      "titleId": "Updating SIM PJU & Aplikasi Android Pelaporan PJU Kabupaten Sukabumi",
+      "tech": ["Laravel", "MySQL", "Ionic"]
+    },
+    {
+      "year": "2017",
+      "title": "Transmigration & Manpower Application",
+      "titleId": "Pembuatan Aplikasi Transmigrasi dan Ketenagakerjaan",
+      "tech": ["Laravel", "MySQL"]
+    },
+    {
+      "year": "2016",
+      "title": "Web-Based GIS Application — DPMPTSP Bogor Regency",
+      "titleId": "Pembuatan Aplikasi GIS Berbasis Web di DPMPTSP Kabupaten Bogor",
+      "tech": ["PHP Framework", "PostgreSQL", "ArcGIS"]
+    },
+    {
+      "year": "2015",
+      "title": "Spatial Planning WebGIS & Kiosk Application — Bogor Regency",
+      "titleId": "Asisten Pembuatan Aplikasi SIT Ruang & Kios K Kabupaten Bogor",
+      "tech": ["PHP Framework", "ArcGIS", "WordPress"]
+    },
+    {
+      "year": "2015",
+      "title": "Green Open Space WebGIS Application — Bogor City",
+      "titleId": "Pembuatan Aplikasi RTH Berbasis WebGIS Kota Bogor",
+      "tech": ["PHP Framework", "PostgreSQL", "ArcGIS"]
+    },
+    {
+      "year": "2015",
+      "title": "Materials & Equipment Management Information System",
+      "titleId": "Pembuatan SIM Manajemen Bahan dan Peralatan",
+      "tech": ["PHP Framework", "PostgreSQL"]
+    },
+    {
+      "year": "2014",
+      "title": "Spatial Data Catalog — Ministry of Public Works, Jakarta",
+      "titleId": "Membuat SIM Katalog Data Spasial Kementerian Pekerjaan Umum Jakarta",
+      "tech": ["PHP", "PostgreSQL", "jQuery", "ArcGIS"]
+    },
+    {
+      "year": "2013",
+      "title": "Website & WebGIS — National Strategic Area of East Kalimantan",
+      "titleId": "Pembuatan Website Kawasan Strategis Nasional Kalimantan Timur dan WebGIS KSN",
+      "tech": ["PHP", "MySQL", "ArcGIS", "Flash"]
+    },
+    {
+      "year": "2012",
+      "title": "Advanced WordPress Website — damarlarascipta.com",
+      "titleId": "Membuat Website WordPress Based Advanced — damarlarascipta.com",
+      "tech": ["WordPress", "Custom CMS"]
+    },
+    {
+      "year": "2012",
+      "title": "School Information System",
+      "titleId": "Membuat Sistem Informasi Sekolah",
+      "tech": ["PHP", "MySQL"]
+    },
+    {
+      "year": "2011",
+      "title": "Motorcycle Credit Information System (SMK Wikrama Competency Test)",
+      "titleId": "Pembuatan SIM Kredit Motor (Uji Kompetensi SMK Wikrama)",
+      "tech": ["PHP", "MySQL"]
+    },
+    {
+      "year": "2010",
+      "title": "Internship — Academic Information System at STEI Tazkia, Bogor",
+      "titleId": "Praktek Kerja Lapangan SIM Akademik di STEI Tazkia, Bogor",
+      "tech": ["PHP", "MySQL"]
+    }
+  ],
+
+  "education": [
+    {
+      "period": "2011 – 2015",
+      "institution": "STMIK Ganesha Bandung",
+      "major": "Informatics Engineering",
+      "majorId": "Teknik Informatika",
+      "level": "Bachelor",
+      "degree": "S.Kom"
+    },
+    {
+      "period": "2008 – 2011",
+      "institution": "SMK Wikrama Bogor",
+      "major": "Vocational High School",
+      "majorId": "Sekolah Menengah Kejuruan",
+      "level": "High School",
+      "degree": null
+    },
+    {
+      "period": "2005 – 2008",
+      "institution": "SMPN 02 Ciawi",
+      "major": "Junior High School",
+      "majorId": "Sekolah Menengah Pertama",
+      "level": "Middle School",
+      "degree": null
+    },
+    {
+      "period": "1999 – 2005",
+      "institution": "SDN 01 Caringin",
+      "major": "Elementary School",
+      "majorId": "Sekolah Dasar",
+      "level": "Elementary",
+      "degree": null
+    }
+  ],
+
+  "certifications": [
+    {
+      "year": "2011",
+      "title": "TOEIC",
+      "description": "Test of English for International Communication"
+    },
+    {
+      "year": "2011",
+      "title": "Job Readiness Training",
+      "titleId": "Pelatihan Persiapan Kerja (P2K)",
+      "description": "Job preparation training program"
+    }
+  ],
+
+  "organizations": [
+    {
+      "period": "2009 – 2010",
+      "role": "Scout Member",
+      "roleId": "Anggota Pramuka",
+      "organization": "SMK Wikrama Bogor"
+    }
+  ]
+}

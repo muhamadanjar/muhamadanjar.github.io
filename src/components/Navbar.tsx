@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { personal } from '../data';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -18,6 +19,10 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  const names = personal.name.split(' ');
+  const firstName = names[0];
+  const lastName = names[1] || '';
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -27,101 +32,127 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
   useGSAP(() => {
     gsap.from('.nav-item', {
-      y: -20,
+      y: -10,
       opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: 'power3.out',
+      duration: 0.5,
+      stagger: 0.05,
+      ease: 'power2.out',
     });
   }, []);
 
   return (
-    <nav
-      className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300 border-b',
-        isScrolled
-          ? 'bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-zinc-200 dark:border-zinc-800 py-4 shadow-sm'
-          : 'bg-transparent border-transparent py-6'
-      )}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <NavLink 
-          to="/" 
-          className="text-2xl font-bold tracking-tighter hover:scale-105 transition-transform"
-        >
-          Muhamad<span className="text-indigo-500">Anjar</span>
-        </NavLink>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) =>
-                cn(
-                  'nav-item px-4 py-2 rounded-full text-sm font-medium transition-all relative overflow-hidden group',
-                  isActive
-                    ? 'text-indigo-600 dark:text-indigo-400'
-                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
-                )
-              }
-            >
-              {link.name}
-              <span className={cn(
-                "absolute bottom-0 left-0 w-full h-0.5 bg-indigo-500 transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100",
-                location.pathname === link.path && "scale-x-100"
-              )} />
-            </NavLink>
-          ))}
-          <NavLink
-             to="/contact"
-             className="ml-4 px-6 py-2 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-sm font-semibold hover:scale-105 active:scale-95 transition-all shadow-md"
+    <>
+      <nav
+        className={cn(
+          'fixed top-0 w-full z-[60] transition-all duration-500 h-20 flex items-center',
+          isScrolled
+            ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl border-zinc-200/50 dark:border-zinc-800/50 shadow-sm'
+            : 'bg-transparent'
+        )}
+      >
+        <div className="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
+          <NavLink 
+            to="/" 
+            className="text-2xl font-bold tracking-tighter transition-transform hover:scale-105 shrink-0 flex items-center gap-1"
           >
-            Hire Me
+            <span className="text-zinc-900 dark:text-white uppercase tracking-widest">{firstName}</span>
+            <span className="text-indigo-500 uppercase tracking-widest">{lastName}</span>
           </NavLink>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            <div className="flex items-center gap-6">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.path}
+                  to={link.path}
+                  className={({ isActive }) =>
+                    cn(
+                      'nav-item text-sm font-semibold transition-all relative py-2',
+                      isActive
+                        ? 'text-indigo-600 dark:text-indigo-400'
+                        : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
+                    )
+                  }
+                >
+                  {link.name}
+                  {location.pathname === link.path && (
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-500 dark:bg-indigo-400 rounded-full" />
+                  )}
+                </NavLink>
+              ))}
+            </div>
+            
+            <NavLink
+               to="/contact"
+               className="px-6 py-2.5 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg"
+            >
+              Hire Me
+            </NavLink>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 text-zinc-900 dark:text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+      </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-zinc-600 dark:text-zinc-400"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation Overlay */}
       <div
         className={cn(
-          'fixed inset-0 top-[73px] bg-white dark:bg-zinc-950 z-40 md:hidden transition-all duration-500 ease-in-out px-6 py-10',
+          'fixed inset-0 bg-white dark:bg-zinc-950 z-[55] md:hidden transition-all duration-500 ease-in-out flex flex-col p-6 h-screen',
           isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         )}
       >
-        <div className="flex flex-col gap-6">
-          {navLinks.map((link) => (
+        <div className="flex flex-col gap-8 pt-24 h-full">
+          {navLinks.map((link, idx) => (
             <NavLink
               key={link.path}
               to={link.path}
               className={({ isActive }) =>
                 cn(
-                  'text-3xl font-bold tracking-tight transition-colors',
+                  'text-5xl font-bold tracking-tight transition-all',
                   isActive
-                    ? 'text-indigo-600 dark:text-indigo-400'
-                    : 'text-zinc-500 dark:text-zinc-700'
+                    ? 'text-indigo-500'
+                    : 'text-zinc-300 dark:text-zinc-700 hover:text-zinc-900 dark:hover:text-white'
                 )
               }
+              style={{ transitionDelay: `${idx * 50}ms` }}
             >
               {link.name}
             </NavLink>
           ))}
+          <div className="mt-auto pb-12">
+            <NavLink
+              to="/contact"
+              className="w-full py-6 rounded-3xl bg-indigo-600 text-white text-2xl font-bold shadow-2xl block text-center"
+            >
+              Hire Me
+            </NavLink>
+          </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 }

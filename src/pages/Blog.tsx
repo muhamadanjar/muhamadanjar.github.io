@@ -21,9 +21,10 @@ export default function Blog() {
           <Sparkles size={20} />
           <span className="uppercase tracking-widest text-xs">Articles & Insights</span>
         </div>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-          Latest from the <span className="text-indigo-500">Blog</span>
+        <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight mb-8">
+          The <span className="text-indigo-500 font-black">Knowledge</span> Hub
         </h1>
+
         <p className="text-xl text-zinc-500 max-w-2xl mx-auto">
           Sharing my thoughts on technology, development, and the digital world.
         </p>
@@ -39,7 +40,8 @@ export default function Blog() {
               <img 
                 src={post.image} 
                 alt={post.title} 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out"
+
               />
               <div className="absolute top-4 left-4">
                 <span className="px-3 py-1.5 rounded-xl bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">

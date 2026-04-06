@@ -2,6 +2,7 @@ import { Mail, MessageSquare, Phone, Send, Sparkles } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef } from 'react';
+import { personal } from '../data';
 
 export default function Contact() {
   const container = useRef<HTMLDivElement>(null);
@@ -28,9 +29,10 @@ export default function Contact() {
           <Sparkles size={20} />
           <span className="uppercase tracking-widest text-xs">Let's Connect</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
-          Have a project <span className="text-indigo-500">in mind?</span>
+        <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight mb-8">
+          Get in <span className="text-indigo-500 font-black">Touch</span>
         </h1>
+
         <p className="text-xl text-zinc-500 max-w-2xl mx-auto">
           Whether you have a specific project or just want to say hello, I'm always open to new connections.
         </p>
@@ -44,8 +46,8 @@ export default function Contact() {
             </div>
             <h3 className="text-2xl font-bold mb-2">Email Me</h3>
             <p className="text-zinc-500 mb-4">I'll respond within 24 hours.</p>
-            <a href="mailto:hello@example.com" className="text-xl font-bold text-indigo-500 hover:text-indigo-600 transition-colors">
-              hello@example.com
+            <a href={`mailto:${personal.email[0]}`} className="text-xl font-bold text-indigo-500 hover:text-indigo-600 transition-colors break-all">
+              {personal.email[0]}
             </a>
           </div>
 
@@ -55,8 +57,8 @@ export default function Contact() {
             </div>
             <h3 className="text-2xl font-bold mb-2">Call Me</h3>
             <p className="text-zinc-500 mb-4">Mon-Fri from 9am to 6pm.</p>
-            <a href="tel:+621234567890" className="text-xl font-bold text-purple-500 hover:text-purple-600 transition-colors">
-              +62 123 4567 890
+            <a href={`tel:${personal.phone[0].replace(/\s+/g, '')}`} className="text-xl font-bold text-purple-500 hover:text-purple-600 transition-colors">
+              {personal.phone[0]}
             </a>
           </div>
 
@@ -65,12 +67,13 @@ export default function Contact() {
               <MessageSquare size={32} />
             </div>
             <h3 className="text-2xl font-bold mb-2">Socials</h3>
-            <p className="text-zinc-500 mb-4">Let's connect on LinkedIn.</p>
-            <a href="#" className="text-xl font-bold text-emerald-500 hover:text-emerald-600 transition-colors">
+            <p className="text-zinc-500 mb-4">Let's connect on Medium.</p>
+            <a href={personal.blog} target="_blank" rel="noreferrer" className="text-xl font-bold text-emerald-500 hover:text-emerald-600 transition-colors">
               @muhamadanjar
             </a>
           </div>
         </div>
+
 
         <form className="contact-form space-y-8 bg-white dark:bg-zinc-900 p-10 md:p-16 rounded-[40px] border border-zinc-200 dark:border-zinc-800 shadow-2xl shadow-indigo-500/5">
           <div className="grid md:grid-cols-2 gap-8">

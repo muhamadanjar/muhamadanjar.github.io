@@ -4,6 +4,7 @@ import { NavLink } from 'react-router';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef } from 'react';
+import { personal } from '../data';
 
 export default function Home() {
   const container = useRef<HTMLDivElement>(null);
@@ -35,13 +36,18 @@ export default function Home() {
         </div>
 
         <h1 className="hero-title text-5xl md:text-8xl font-extrabold tracking-tight mb-8 leading-[1.1] text-zinc-900 dark:text-white">
-          Building Digital <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">Experiences That Matter</span>
+          {personal.title} {personal.subtitle && (
+            <>
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">{personal.subtitle}</span>
+            </>
+          )}
         </h1>
 
         <p className="hero-description text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-          I'm <span className="font-bold text-zinc-900 dark:text-white">Muhamad Anjar</span>, a Full Stack Developer specializing in crafting highly performant, visually stunning web applications.
+          I'm <span className="font-bold text-zinc-900 dark:text-white">{personal.name}</span>, a <span className="text-indigo-500 font-semibold">{personal.title}</span> {personal.subtitle ? `specializing in crafting ${personal.subtitle.toLowerCase()}.` : 'focused on building high-performance web applications.'}
         </p>
+
 
         <div className="hero-btns flex flex-col sm:flex-row items-center justify-center gap-5">
           <NavLink
@@ -66,11 +72,12 @@ export default function Home() {
           <a href="#" className="p-4 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:text-blue-600 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all hover:-translate-y-1">
             <Linkedin size={28} />
           </a>
-          <a href="mailto:hello@example.com" className="p-4 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:text-indigo-500 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all hover:-translate-y-1">
+          <a href={`mailto:${personal.email[0]}`} className="p-4 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:text-indigo-500 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-all hover:-translate-y-1">
             <Mail size={28} />
           </a>
         </div>
       </div>
+
 
       <div className="hero-scroll absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer text-zinc-400">
         <ChevronDown size={32} />

@@ -32,9 +32,10 @@ export default function Portfolio() {
           <Sparkles size={20} />
           <span className="uppercase tracking-widest text-xs">Work Showcase</span>
         </div>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-          Selected <span className="text-indigo-500">Projects</span>
+        <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight mb-8">
+          Selected <span className="text-indigo-500 font-black">Works</span>
         </h1>
+
         <p className="text-xl text-zinc-500 max-w-2xl mx-auto mb-12">
           A collection of digital solutions I've built, focusing on performance, scalability, and user experience.
         </p>

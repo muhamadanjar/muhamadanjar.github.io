@@ -1,54 +1,54 @@
+import cvData from './cv.json';
+
+// Personal Info
+export const personal = cvData.personal;
+
 // Data sections
-export const skills = [
-  { name: 'Frontend', items: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Vite'] },
-  { name: 'Backend', items: ['Node.js', 'Express', 'PostgreSQL', 'Python', 'REST APIs', 'Odoo'] },
-  { name: 'Tools', items: ['Git', 'Docker', 'Linux', 'AWS'] }
-];
+export const skills = cvData.skills.map(skill => ({
+  name: skill.category,
+  items: skill.items
+}));
 
-export const experience = [
-  {
-    role: 'Senior Software Engineer',
-    company: 'Tech Solutions Inc.',
-    period: '2023 - Present',
-    description: 'Spearheaded the development of scalable microservices, mentored junior developers, and reduced system latency by 40% through optimized caching strategies.'
-  },
-  {
-    role: 'Full Stack Developer',
-    company: 'Creative Agency',
-    period: '2020 - 2023',
-    description: 'Built and maintained multiple client-facing applications using React and Node.js. Integrated various third-party APIs and payment gateways.'
-  },
-  {
-    role: 'Frontend Developer Intern',
-    company: 'Startup Hub',
-    period: '2019 - 2020',
-    description: 'Assisted in building responsive web interfaces, optimizing assets, and participating in agile ceremonies.'
-  }
-];
+export const experience = cvData.experience.slice(0, 10).map(exp => ({
+  role: exp.title,
+  company: exp.tech.join(', '),
+  period: exp.year,
+  description: exp.titleId
+}));
 
-export const projects = [
-  {
-    title: 'E-Commerce Platform',
-    category: 'Full Stack',
-    image: 'https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop',
-    description: 'A complete e-commerce solution with cart, checkout, and admin dashboard.',
-    tags: ['React', 'Node.js', 'Stripe', 'MongoDB']
-  },
-  {
-    title: 'Task Management App',
-    category: 'Productivity',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
-    description: 'Real-time collaborative task manager with drag-and-drop kanban boards.',
-    tags: ['Next.js', 'Tailwind CSS', 'Supabase', 'Socket.io']
-  },
-  {
-    title: 'Financial Dashboard',
-    category: 'Analytics',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop',
-    description: 'Interactive dashboard for visualizing crypto and stock portfolio metrics.',
-    tags: ['React', 'TypeScript', 'Recharts', 'Tailwind CSS']
+export const projects = cvData.experience.map((exp) => {
+  const tech = exp.tech.map(t => t.toLowerCase());
+  let category = 'Web Development';
+  
+  if (tech.some(t => ['geoserver', 'arcgis', 'openlayers', 'leaflet', 'cityengine'].includes(t))) {
+    category = 'WebGIS';
+  } else if (tech.some(t => ['flutter', 'react native', 'ionic'].includes(t))) {
+    category = 'Mobile';
+  } else if (tech.some(t => ['odoo', 'erp'].includes(t))) {
+    category = 'ERP';
   }
-];
+
+  let image = '/projects/dashboard.png';
+  if (category === 'WebGIS') image = '/projects/webgis.png';
+  if (category === 'Mobile') image = '/projects/mobile.png';
+
+  return {
+    title: exp.title,
+    category,
+    image,
+    description: exp.titleId,
+    tags: exp.tech
+  };
+});
+
+
+
+export const education = cvData.education;
+
+export const certifications = cvData.certifications;
+
+export const organizations = cvData.organizations;
+
 
 export const blogPosts = [
   {
