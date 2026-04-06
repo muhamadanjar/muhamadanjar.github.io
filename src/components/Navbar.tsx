@@ -11,7 +11,7 @@ const navLinks = [
   { name: 'About', path: '/about' },
   { name: 'Portfolio', path: '/portfolio' },
   { name: 'Blog', path: '/blog' },
-  { name: 'Contact', path: '/contact' },
+  // { name: 'Contact', path: '/contact' },
 ];
 
 export default function Navbar() {
@@ -67,8 +67,8 @@ export default function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
-          <NavLink 
-            to="/" 
+          <NavLink
+            to="/"
             className="text-2xl font-bold tracking-tighter transition-transform hover:scale-105 shrink-0 flex items-center gap-1"
           >
             <span className="text-zinc-900 dark:text-white uppercase tracking-widest">{firstName}</span>
@@ -98,10 +98,10 @@ export default function Navbar() {
                 </NavLink>
               ))}
             </div>
-            
+
             <NavLink
-               to="/contact"
-               className="px-6 py-2.5 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg"
+              to="/contact"
+              className="px-6 py-2.5 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg"
             >
               Hire Me
             </NavLink>

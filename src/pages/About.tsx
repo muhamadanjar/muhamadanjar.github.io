@@ -25,18 +25,6 @@ export default function About() {
         },
       });
     });
-
-    gsap.from('.skill-card', {
-      scale: 0.8,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: 'back.out(1.7)',
-      scrollTrigger: {
-        trigger: '.skills-grid',
-        start: 'top 85%',
-      },
-    });
   }, { scope: container });
 
   return (
@@ -111,27 +99,34 @@ export default function About() {
         </div>
 
         <div className="skills-grid grid md:grid-cols-3 gap-8">
-          {skills.map((skillGroup, idx) => (
-            <div key={idx} className="skill-card p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 transition-all">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-500">
-                  {skillGroup.name.includes('Frontend') ? <Monitor size={24} /> :
-                    skillGroup.name.includes('Programming') ? <Code2 size={24} /> :
-                      skillGroup.name.includes('GIS') ? <MapPin size={24} /> :
-                        skillGroup.name.includes('Database') ? <Database size={24} /> :
-                          <Briefcase size={24} />}
+          {skills.map((skillGroup, idx) => {
+            let Icon = Briefcase;
+            if (skillGroup.name.includes('Frontend')) Icon = Monitor;
+            else if (skillGroup.name.includes('Programming')) Icon = Code2;
+            else if (skillGroup.name.includes('GIS')) Icon = MapPin;
+            else if (skillGroup.name.includes('Database')) Icon = Database;
+
+            return (
+              <div key={idx} className="skill-card p-8 rounded-3xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:shadow-indigo-500/5 transition-all flex flex-col h-full">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3.5 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-500 shrink-0">
+                    <Icon size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold leading-tight">{skillGroup.name}</h3>
                 </div>
-                <h3 className="text-2xl font-bold">{skillGroup.name}</h3>
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {skillGroup.items.map((item, i) => (
+                    <span
+                      key={i}
+                      className="px-3.5 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-sm hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-indigo-500/20 dark:hover:text-indigo-300 transition-colors cursor-default"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {skillGroup.items.map((item, i) => (
-                  <span key={i} className="px-4 py-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-bold text-sm border border-transparent hover:border-indigo-500/50 transition-all">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
