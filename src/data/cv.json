@@ -218,7 +218,8 @@
       "titleId": "Pengembangan Aplikasi SIDIK V5",
       "tech": [
         "Vue.js",
-        "Python"
+        "Python",
+        "Django"
       ]
     },
     {
