@@ -46,15 +46,15 @@ export default function Navbar() {
     setIsMobileMenuOpen(false);
   }, [location]);
 
-  useGSAP(() => {
-    gsap.from('.nav-item', {
-      y: -10,
-      opacity: 0,
-      duration: 0.5,
-      stagger: 0.05,
-      ease: 'power2.out',
-    });
-  }, []);
+  // useGSAP(() => {
+  //   gsap.from('.nav-item', {
+  //     y: -10,
+  //     opacity: 0,
+  //     duration: 0.5,
+  //     stagger: 0.05,
+  //     ease: 'power2.out',
+  //   });
+  // }, []);
 
   return (
     <>

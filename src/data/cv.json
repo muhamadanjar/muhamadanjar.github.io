@@ -45,12 +45,13 @@
         "Laravel",
         "CodeIgniter",
         "Django",
+        "FastAPI",
         "Next.js",
         "React Native",
         "Flutter",
         "Ionic",
         "Odoo",
-        "Vue.js"
+        "React.js"
       ]
     },
     {
@@ -58,6 +59,7 @@
       "items": [
         "MySQL",
         "PostgreSQL",
+        "PostGIS",
         "SQL Server"
       ]
     },
@@ -83,16 +85,7 @@
       "category": "Tools & Design",
       "items": [
         "Photoshop",
-        "Balsamiq Mockup",
-        "Microsoft Office"
-      ]
-    },
-    {
-      "category": "Operating Systems",
-      "items": [
-        "Windows",
-        "Linux",
-        "Mac OS"
+        "Balsamiq Mockup"
       ]
     }
   ],
@@ -417,53 +410,6 @@
         "jQuery",
         "ArcGIS"
       ]
-    },
-    {
-      "year": "2013",
-      "title": "Website & WebGIS — National Strategic Area of East Kalimantan",
-      "titleId": "Pembuatan Website Kawasan Strategis Nasional Kalimantan Timur dan WebGIS KSN",
-      "tech": [
-        "PHP",
-        "MySQL",
-        "ArcGIS",
-        "Flash"
-      ]
-    },
-    {
-      "year": "2012",
-      "title": "Advanced WordPress Website — damarlarascipta.com",
-      "titleId": "Membuat Website WordPress Based Advanced — damarlarascipta.com",
-      "tech": [
-        "WordPress",
-        "Custom CMS"
-      ]
-    },
-    {
-      "year": "2012",
-      "title": "School Information System",
-      "titleId": "Membuat Sistem Informasi Sekolah",
-      "tech": [
-        "PHP",
-        "MySQL"
-      ]
-    },
-    {
-      "year": "2011",
-      "title": "Motorcycle Credit Information System (SMK Wikrama Competency Test)",
-      "titleId": "Pembuatan SIM Kredit Motor (Uji Kompetensi SMK Wikrama)",
-      "tech": [
-        "PHP",
-        "MySQL"
-      ]
-    },
-    {
-      "year": "2010",
-      "title": "Internship — Academic Information System at STEI Tazkia, Bogor",
-      "titleId": "Praktek Kerja Lapangan SIM Akademik di STEI Tazkia, Bogor",
-      "tech": [
-        "PHP",
-        "MySQL"
-      ]
     }
   ],
   "education": [
@@ -482,22 +428,6 @@
       "majorId": "Sekolah Menengah Kejuruan",
       "level": "High School",
       "degree": null
-    },
-    {
-      "period": "2005 – 2008",
-      "institution": "SMPN 02 Ciawi",
-      "major": "Junior High School",
-      "majorId": "Sekolah Menengah Pertama",
-      "level": "Middle School",
-      "degree": null
-    },
-    {
-      "period": "1999 – 2005",
-      "institution": "SDN 01 Caringin",
-      "major": "Elementary School",
-      "majorId": "Sekolah Dasar",
-      "level": "Elementary",
-      "degree": null
     }
   ],
   "certifications": [
@@ -505,20 +435,7 @@
       "year": "2011",
       "title": "TOEIC",
       "description": "Test of English for International Communication"
-    },
-    {
-      "year": "2011",
-      "title": "Job Readiness Training",
-      "titleId": "Pelatihan Persiapan Kerja (P2K)",
-      "description": "Job preparation training program"
     }
   ],
-  "organizations": [
-    {
-      "period": "2009 – 2010",
-      "role": "Scout Member",
-      "roleId": "Anggota Pramuka",
-      "organization": "SMK Wikrama Bogor"
-    }
-  ]
+  "organizations": []
 }
