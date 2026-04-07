@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router';
 import { Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+// import { useGSAP } from '@gsap/react';
+// import gsap from 'gsap';
 import { personal } from '../data';
 
 const navLinks = [

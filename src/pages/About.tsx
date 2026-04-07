@@ -63,11 +63,11 @@ export default function About() {
             <div className="flex items-center gap-4 text-zinc-500 mb-10">
               <div className="flex items-center gap-1.5">
                 <MapPin size={18} className="text-indigo-500" />
-                <span>{personal.address.district}, {personal.address.regency}</span>
+                <span>{personal.address.country}</span>
               </div>
               <div className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />
               <span>{personal.gender}</span>
-              <div className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+              {/* <div className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700" /> */}
               {/* <span>{personal.religion}</span> */}
             </div>
 
