@@ -42,7 +42,7 @@ export default function Footer() {
           <ul className="space-y-4">
             <li className="text-zinc-500">{personal.address.regency}, {personal.address.country}</li>
             <li><a href={`mailto:${personal.email[0]}`} className="text-zinc-500 hover:text-indigo-500 transition-colors break-all">{personal.email[0]}</a></li>
-            <li className="text-zinc-500">{personal.phone[0]}</li>
+            {/* <li className="text-zinc-500">{personal.phone[0]}</li> */}
           </ul>
         </div>
       </div>
