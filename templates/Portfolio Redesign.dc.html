@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F8FC; --surface:#FFFFFF; --surface2:#EAF1F9; --border:#DBE6F2;
+    --text:#16283D; --muted:#5F7590; --accent:#3E7BC1; --accent-2:#6FA3D9;
+    --accent-soft:#E4EEF9; --shadow:0 1px 2px rgba(22,40,61,.04),0 12px 32px -18px rgba(22,40,61,.28);
+  }
+  [data-theme="dark"]{
+    --bg:#0C1521; --surface:#121E2C; --surface2:#182838; --border:#23384B;
+    --text:#E7F0F8; --muted:#93A9C0; --accent:#7EAEE0; --accent-2:#4E85BE;
+    --accent-soft:#17293C; --shadow:0 1px 2px rgba(0,0,0,.3),0 16px 40px -20px rgba(0,0,0,.7);
+  }
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+  body{margin:0;background:#F4F8FC;}
+  [data-theme="dark"] body,body:has([data-theme="dark"]){background:#0C1521;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{color:var(--text);}
+  ::selection{background:rgba(62,123,193,.22);}
+  img{max-width:100%;}
+  @media (max-width:1000px){
+    [data-r="hero"]{grid-template-columns:1fr !important;gap:40px !important;padding:56px 0 64px !important;}
+    [data-r="heroimg"]{max-width:380px;}
+    [data-r="split"]{grid-template-columns:1fr !important;gap:24px !important;}
+    [data-r="contact"]{grid-template-columns:1fr !important;gap:34px !important;padding:34px !important;}
+    [data-r="pad"]{padding-left:20px !important;padding-right:20px !important;}
+  }
+  @media (max-width:660px){
+    [data-r="sec"]{padding:48px 0 !important;}
+    [data-r="stats"]{grid-template-columns:1fr 1fr !important;}
+    [data-r="contactrow"]{grid-template-columns:1fr !important;gap:4px !important;}
+    [data-r="exprow"]{grid-template-columns:1fr !important;gap:8px !important;}
+    [data-r="contact"]{padding:24px !important;border-radius:18px !important;}
+    [data-r="hire"]{display:none !important;}
+    [data-r="cta"] > a{flex:1 1 100%;text-align:center;}
+  }
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',system-ui,sans-serif;min-height:100vh;transition:background .4s ease,color .4s ease;">
+
+  <header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--border);">
+    <div data-r="pad" style="max-width:1180px;margin:0 auto;padding:0 28px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+      <a href="#top" style="display:flex;align-items:center;gap:10px;color:var(--text);">
+        <span style="width:34px;height:34px;border-radius:11px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px;letter-spacing:-.02em;">MA</span>
+        <span style="font-weight:700;font-size:15px;letter-spacing:-.01em;">Muhamad Anjar</span>
+      </a>
+      <nav style="display:none;align-items:center;gap:28px;" data-nav="desktop">
+        <a href="#about" style="font-size:14px;font-weight:600;color:var(--muted);">About</a>
+        <a href="#skills" style="font-size:14px;font-weight:600;color:var(--muted);">Skills</a>
+        <a href="#experience" style="font-size:14px;font-weight:600;color:var(--muted);">Experience</a>
+        <a href="#projects" style="font-size:14px;font-weight:600;color:var(--muted);">Projects</a>
+        <a href="#education" style="font-size:14px;font-weight:600;color:var(--muted);">Education</a>
+        <a href="#writing" style="font-size:14px;font-weight:600;color:var(--muted);">Writing</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button onClick="{{ toggleLang }}" style="height:36px;padding:0 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.06em;cursor:pointer;">{{ langLabel }}</button>
+        <button onClick="{{ toggleTheme }}" aria-label="Toggle theme" style="width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:15px;cursor:pointer;display:grid;place-items:center;">{{ themeIcon }}</button>
+        <a href="#contact" data-r="hire" style="height:36px;padding:0 16px;border-radius:10px;background:var(--accent);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;">Hire me</a>
+        <button onClick="{{ toggleMenu }}" data-nav="burger" aria-label="Menu" style="width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:15px;cursor:pointer;display:none;place-items:center;">☰</button>
+      </div>
+    </div>
+    <div style="{{ menuStyle }}">
+      <div data-r="pad" style="max-width:1180px;margin:0 auto;padding:14px 28px 20px;display:grid;gap:2px;">
+        <a href="#about" onClick="{{ closeMenu }}" style="padding:12px 0;font-size:17px;font-weight:700;color:var(--text);border-bottom:1px solid var(--border);">About</a>
+        <a href="#skills" onClick="{{ closeMenu }}" style="padding:12px 0;font-size:17px;font-weight:700;color:var(--text);border-bottom:1px solid var(--border);">Skills</a>
+        <a href="#experience" onClick="{{ closeMenu }}" style="padding:12px 0;font-size:17px;font-weight:700;color:var(--text);border-bottom:1px solid var(--border);">Experience</a>
+        <a href="#projects" onClick="{{ closeMenu }}" style="padding:12px 0;font-size:17px;font-weight:700;color:var(--text);border-bottom:1px solid var(--border);">Projects</a>
+        <a href="#education" onClick="{{ closeMenu }}" style="padding:12px 0;font-size:17px;font-weight:700;color:var(--text);border-bottom:1px solid var(--border);">Education</a>
+        <a href="#writing" onClick="{{ closeMenu }}" style="padding:12px 0;font-size:17px;font-weight:700;color:var(--text);border-bottom:1px solid var(--border);">Writing</a>
+        <a href="#contact" onClick="{{ closeMenu }}" style="margin-top:12px;padding:14px;border-radius:12px;background:var(--accent);color:#fff;font-size:15px;font-weight:700;text-align:center;">Hire me</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" data-r="pad" style="max-width:1180px;margin:0 auto;padding:0 28px;">
+
+    <section data-r="hero" style="padding:96px 0 88px;display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:center;" data-section="hero">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border-radius:999px;background:var(--accent-soft);border:1px solid var(--border);font-size:12.5px;font-weight:600;color:var(--accent);margin-bottom:26px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);"></span>
+          Open to remote opportunities
+        </div>
+        <h1 style="font-size:clamp(34px,6.4vw,60px);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:0 0 22px;">
+          Full Stack Developer<br><span style="color:var(--accent);">building government &amp; enterprise systems.</span>
+        </h1>
+        <p style="font-size:clamp(15.5px,2.4vw,18px);line-height:1.65;color:var(--muted);margin:0 0 34px;max-width:560px;text-wrap:pretty;">{{ heroDesc }}</p>
+        <div data-r="cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;">
+          <a href="#projects" style="padding:14px 24px;border-radius:12px;background:var(--accent);color:#fff;font-weight:700;font-size:14.5px;white-space:nowrap;box-shadow:var(--shadow);">View projects</a>
+          <a href="#contact" style="padding:14px 24px;border-radius:12px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-weight:700;font-size:14.5px;white-space:nowrap;">Get in touch</a>
+          <a href="/cv.json" download style="padding:14px 24px;border-radius:12px;border:1px solid var(--border);color:var(--muted);font-weight:700;font-size:14.5px;white-space:nowrap;">Download CV</a>
+        </div>
+        <div data-r="stats" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:520px;">
+          <div style="border-left:2px solid var(--accent);padding-left:14px;">
+            <div style="font-size:26px;font-weight:800;letter-spacing:-.03em;">12+</div>
+            <div style="font-size:12.5px;color:var(--muted);font-weight:600;">Years building software</div>
+          </div>
+          <div style="border-left:2px solid var(--border);padding-left:14px;">
+            <div style="font-size:26px;font-weight:800;letter-spacing:-.03em;">34</div>
+            <div style="font-size:12.5px;color:var(--muted);font-weight:600;">Delivered projects</div>
+          </div>
+          <div style="border-left:2px solid var(--border);padding-left:14px;">
+            <div style="font-size:26px;font-weight:800;letter-spacing:-.03em;">6</div>
+            <div style="font-size:12.5px;color:var(--muted);font-weight:600;">Stack disciplines</div>
+          </div>
+        </div>
+      </div>
+      <div data-r="heroimg" style="position:relative;">
+        <div style="position:absolute;inset:-18px -18px auto auto;width:180px;height:180px;border-radius:50%;background:var(--accent-soft);filter:blur(10px);"></div>
+        <img src="public/avatar.png" alt="Muhamad Anjar Pangestu" style="position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;border:1px solid var(--border);box-shadow:var(--shadow);background:var(--surface2);">
+        <div style="position:relative;margin-top:-34px;margin-left:18px;width:calc(100% - 36px);background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow);">
+          <div style="font-size:13px;font-weight:700;">Bogor, Jawa Barat — Indonesia</div>
+          <div style="font-size:12.5px;color:var(--muted);margin-top:2px;">S.Kom, Informatics Engineering</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" data-r="sec" style="padding:72px 0;border-top:1px solid var(--border);" data-section>
+      <div data-r="split" style="display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start;">
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">About</div>
+        </div>
+        <div>
+          <p style="font-size:21px;line-height:1.6;font-weight:500;margin:0 0 20px;text-wrap:pretty;">{{ aboutLead }}</p>
+          <p style="font-size:16px;line-height:1.75;color:var(--muted);margin:0;max-width:720px;text-wrap:pretty;">{{ aboutBody }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" data-r="sec" style="padding:72px 0;border-top:1px solid var(--border);" data-section>
+      <div data-r="split" style="display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start;">
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Skills</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.6;">Tools I use day to day across backend, frontend, spatial data and mobile.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;">
+          <sc-for list="{{ skills }}" as="group" hint-placeholder-count="6">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px 22px;">
+              <div style="font-size:13.5px;font-weight:700;margin-bottom:14px;">{{ group.name }}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <sc-for list="{{ group.items }}" as="item" hint-placeholder-count="4">
+                  <span style="padding:6px 11px;border-radius:8px;background:var(--surface2);color:var(--muted);font-size:12.5px;font-weight:600;font-family:'JetBrains Mono',monospace;">{{ item }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" data-r="sec" style="padding:72px 0;border-top:1px solid var(--border);" data-section>
+      <div data-r="split" style="display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start;">
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Experience</div>
+          <div style="font-size:14px;color:var(--muted);line-height:1.6;">Selected engagements, most recent first.</div>
+        </div>
+        <div>
+          <div style="display:flex;flex-direction:column;">
+            <sc-for list="{{ visibleExperience }}" as="exp" hint-placeholder-count="8">
+              <div data-r="exprow" style="display:grid;grid-template-columns:78px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--border);">
+                <div style="font-size:13px;font-weight:700;color:var(--accent);font-family:'JetBrains Mono',monospace;padding-top:2px;">{{ exp.year }}</div>
+                <div>
+                  <div style="font-size:16.5px;font-weight:700;line-height:1.4;margin-bottom:8px;text-wrap:pretty;">{{ exp.title }}</div>
+                  <div style="display:flex;flex-wrap:wrap;gap:7px;">
+                    <sc-for list="{{ exp.tech }}" as="t" hint-placeholder-count="3">
+                      <span style="padding:4px 9px;border-radius:7px;border:1px solid var(--border);color:var(--muted);font-size:11.5px;font-weight:600;">{{ t }}</span>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <button onClick="{{ toggleExperience }}" style="margin-top:22px;padding:11px 20px;border-radius:11px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;">{{ experienceToggleLabel }}</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" data-r="sec" style="padding:72px 0;border-top:1px solid var(--border);" data-section>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:28px;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Projects</div>
+          <h2 style="font-size:clamp(25px,4vw,34px);font-weight:800;letter-spacing:-.03em;margin:0;">Work across web, spatial and mobile</h2>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+            <button onClick="{{ f.select }}" style="{{ f.style }}">{{ f.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:20px;">
+        <sc-for list="{{ visibleProjects }}" as="p" hint-placeholder-count="6">
+          <article style="background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .3s ease;" style-hover="transform:translateY(-4px)">
+            <div style="aspect-ratio:16/10;overflow:hidden;background:var(--surface2);border-bottom:1px solid var(--border);">
+              <img src="{{ p.image }}" alt="{{ p.title }}" style="width:100%;height:100%;object-fit:cover;">
+            </div>
+            <div style="padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="padding:4px 9px;border-radius:7px;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.04em;">{{ p.category }}</span>
+                <span style="font-size:11.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;">{{ p.year }}</span>
+              </div>
+              <h3 style="font-size:16px;font-weight:700;line-height:1.4;margin:0;text-wrap:pretty;">{{ p.title }}</h3>
+              <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-top:auto;">{{ p.tags }}</div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="education" data-r="sec" style="padding:72px 0;border-top:1px solid var(--border);" data-section>
+      <div data-r="split" style="display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start;">
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">Education</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;align-items:start;">
+          <sc-for list="{{ education }}" as="ed" hint-placeholder-count="2">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;">
+              <div style="font-size:12px;font-weight:700;color:var(--accent);font-family:'JetBrains Mono',monospace;margin-bottom:10px;">{{ ed.period }}</div>
+              <div style="font-size:16.5px;font-weight:700;margin-bottom:6px;">{{ ed.institution }}</div>
+              <div style="font-size:14px;color:var(--muted);">{{ ed.major }}</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:8px;">{{ ed.level }}</div>
+            </div>
+          </sc-for>
+          <div style="grid-column:1 / -1;background:var(--accent-soft);border:1px solid var(--border);border-radius:16px;padding:22px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;">Certifications</div>
+            <sc-for list="{{ certifications }}" as="c" hint-placeholder-count="1">
+              <div style="display:flex;align-items:baseline;gap:14px;">
+                <span style="font-size:13px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--accent);">{{ c.year }}</span>
+                <span style="font-size:15.5px;font-weight:700;">{{ c.title }}</span>
+                <span style="font-size:13.5px;color:var(--muted);">{{ c.description }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing" data-r="sec" style="padding:72px 0;border-top:1px solid var(--border);" data-section>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:28px;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;">Writing</div>
+          <h2 style="font-size:clamp(25px,4vw,34px);font-weight:800;letter-spacing:-.03em;margin:0;">Notes on the craft</h2>
+        </div>
+        <a href="https://muhamadanjar.medium.com" target="_blank" rel="noreferrer" style="font-size:14px;font-weight:700;">All posts on Medium →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:20px;">
+        <sc-for list="{{ posts }}" as="post" hint-placeholder-count="3">
+          <a href="https://muhamadanjar.medium.com" target="_blank" rel="noreferrer" style="background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px;color:var(--text);min-height:190px;" style-hover="border-color:var(--accent)">
+            <div style="display:flex;align-items:center;gap:10px;font-size:11.5px;color:var(--muted);font-weight:600;">
+              <span style="color:var(--accent);">{{ post.category }}</span>
+              <span>{{ post.date }}</span>
+            </div>
+            <h3 style="font-size:18px;font-weight:700;line-height:1.35;margin:0;letter-spacing:-.01em;text-wrap:pretty;">{{ post.title }}</h3>
+            <p style="font-size:13.5px;line-height:1.65;color:var(--muted);margin:0;">{{ post.excerpt }}</p>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="contact" data-r="sec" style="padding:72px 0 40px;border-top:1px solid var(--border);" data-section>
+      <div data-r="contact" style="background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:48px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:56px;">
+        <div>
+          <h2 style="font-size:clamp(27px,4.4vw,38px);font-weight:800;letter-spacing:-.035em;margin:0 0 16px;line-height:1.1;">Let's build something<br>reliable together.</h2>
+          <p style="font-size:16px;line-height:1.7;color:var(--muted);margin:0 0 28px;max-width:420px;">{{ contactLead }}</p>
+          <div style="display:flex;gap:10px;">
+            <a href="mailto:arvanria@gmail.com" style="padding:13px 22px;border-radius:12px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;white-space:nowrap;flex-shrink:0;">Email me</a>
+            <a href="https://github.com/muhamadanjar" target="_blank" rel="noreferrer" style="padding:13px 22px;border-radius:12px;border:1px solid var(--border);color:var(--text);font-weight:700;font-size:14px;">GitHub</a>
+          </div>
+        </div>
+        <div style="display:grid;gap:14px;align-content:start;">
+          <div data-r="contactrow" style="display:grid;grid-template-columns:96px 1fr;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+            <div style="font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;">Email</div>
+            <div style="font-size:14.5px;font-weight:600;">arvanria@gmail.com<br>muhamadanjar@live.com</div>
+          </div>
+          <div data-r="contactrow" style="display:grid;grid-template-columns:96px 1fr;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+            <div style="font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;">Phone</div>
+            <div style="font-size:14.5px;font-weight:600;">+62 878-7042-7227<br>+62 857-7451-5356</div>
+          </div>
+          <div data-r="contactrow" style="display:grid;grid-template-columns:96px 1fr;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--border);">
+            <div style="font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;">Location</div>
+            <div style="font-size:14.5px;font-weight:600;">Kab. Bogor, Jawa Barat, Indonesia</div>
+          </div>
+          <div data-r="contactrow" style="display:grid;grid-template-columns:96px 1fr;gap:14px;">
+            <div style="font-size:12.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;">Blog</div>
+            <div style="font-size:14.5px;font-weight:600;"><a href="https://muhamadanjar.medium.com" target="_blank" rel="noreferrer">muhamadanjar.medium.com</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="border-top:1px solid var(--border);margin-top:40px;">
+    <div data-r="pad" style="max-width:1180px;margin:0 auto;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <div style="font-size:13px;color:var(--muted);">© 2026 Muhamad Anjar Pangestu — S.Kom, Full Stack Developer</div>
+      <div style="display:flex;gap:20px;font-size:13px;font-weight:600;">
+        <a href="https://github.com/muhamadanjar" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://muhamadanjar.medium.com" target="_blank" rel="noreferrer">Medium</a>
+        <a href="mailto:arvanria@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280}}">
+const RAW = {
+  skills: [
+    { name: 'Programming Languages', items: ['PHP','Python','JavaScript','Dart','Go'] },
+    { name: 'Frameworks & Libraries', items: ['Laravel','CodeIgniter','Django','FastAPI','Next.js','React Native','Flutter','Ionic','Odoo','React.js'] },
+    { name: 'Databases', items: ['MySQL','PostgreSQL','PostGIS','SQL Server'] },
+    { name: 'GIS & WebGIS', items: ['ArcGIS','Geoserver','OpenLayers','Leaflet','Esri CityEngine'] },
+    { name: 'Frontend', items: ['CSS3','Bootstrap','TailwindCSS'] },
+    { name: 'Tools & Design', items: ['Photoshop','Balsamiq Mockup','Mermaid','Markdown'] }
+  ],
+  experience: [
+    { year:'2025', title:'Client Portal Development', titleId:'Pembuatan Client Portal', tech:['Next.js','PostgreSQL'] },
+    { year:'2025', title:'Silent Center Development', titleId:'Pengembangan Silent Center', tech:['Laravel','PostgreSQL'] },
+    { year:'2024', title:'Kemendagri Monitoring Dashboard', titleId:'Dashboard Monitoring Kemendagri', tech:['Next.js'] },
+    { year:'2024', title:'Silent Center Development', titleId:'Pengembangan Silent Center', tech:['Laravel','PostgreSQL'] },
+    { year:'2023', title:'NFT Token Application Maintenance', titleId:'Maintenance Aplikasi NFT Token', tech:['Laravel','MySQL'] },
+    { year:'2023', title:'Komitel Portal Maintenance', titleId:'Maintenance Aplikasi Portal Komitel', tech:['Python','Odoo'] },
+    { year:'2022', title:'Siberalam Website — Natural Resources Information System, Sukabumi', titleId:'Website Siberalam (SIM Sumber Daya Alam Sukabumi)', tech:['Django','Next.js','React'] },
+    { year:'2022', title:'Silent Center Application Development', titleId:'Pengembangan Aplikasi Silent Center', tech:['Laravel','PostgreSQL','Flutter'] },
+    { year:'2022', title:'Komitel ERP Application', titleId:'Pembuatan Aplikasi ERP Komitel', tech:['Odoo'] },
+    { year:'2022', title:'Stuntman NFT Community Android App', titleId:'Pembuatan Aplikasi Android Stuntman NFT Community', tech:['Flutter','Laravel'] },
+    { year:'2022', title:'SIDIK V5 Application Development', titleId:'Pengembangan Aplikasi SIDIK V5', tech:['Vue.js','Python','Django'] },
+    { year:'2022', title:'Makarim Internal Application Development', titleId:'Pengembangan Aplikasi Internal Makarim', tech:['CodeIgniter'] },
+    { year:'2021', title:'Spatial Planning Information System — Karimun Regency (Web & Android)', titleId:'SIM Tata Ruang Kabupaten Karimun (Web & Android)', tech:['Laravel','PostgreSQL','Geoserver'] },
+    { year:'2021', title:'Manpower Information System — Sukabumi Regency (Silent Center)', titleId:'SIM Tenaga Kerja Kabupaten Sukabumi (Silent Center)', tech:['Laravel','PostgreSQL'] },
+    { year:'2020', title:'SIMTARU WebGIS Application — Bogor City', titleId:'Pembuatan Aplikasi WebGIS SIMTARU Kota Bogor', tech:['Laravel','OpenLayers','Geoserver','PostgreSQL'] },
+    { year:'2020', title:'Green Open Space WebGIS Application', titleId:'Pembuatan Aplikasi GIS Ruang Terbuka Hijau Berbasis Web', tech:['Laravel','PostgreSQL','Geoserver'] },
+    { year:'2020', title:'3D City Scale Model — Bogor City', titleId:'Membuat Aplikasi Maket Kota Bogor', tech:['Esri CityEngine Web','Laravel','Geoserver'] },
+    { year:'2020', title:'Piko Application Maintenance', titleId:'Maintenance Aplikasi Piko', tech:['Laravel','MySQL','SQL Server'] },
+    { year:'2019', title:'Device Monitoring Application (Tracker)', titleId:'Pembuatan Aplikasi Monitoring Device (Treker)', tech:['CodeIgniter','PostgreSQL'] },
+    { year:'2019', title:'Jenius Application Monitoring Dashboard', titleId:'Pembuatan Dashboard Monitoring Aplikasi Jenius', tech:['CodeIgniter','MySQL'] },
+    { year:'2018', title:'Manpower Information System — Sukabumi Regency', titleId:'Pembuatan SIM Tenaga Kerja Kabupaten Sukabumi', tech:['PHP Framework','PostgreSQL'] },
+    { year:'2018', title:'City Asset GIS Web Application — Bogor City', titleId:'Membuat Aplikasi GIS Aset Kota Bogor Berbasis Web', tech:['Laravel','PostgreSQL','Geoserver','OpenLayers 4'] },
+    { year:'2018', title:'Road Condition Web Application — Baubau City', titleId:'Pembuatan Database dan Aplikasi Kondisi Jalan Berbasis Web di Kab. Baubau', tech:['PHP Framework','PostgreSQL'] },
+    { year:'2017', title:'Web-Based Proposal Application (E-Plannar)', titleId:'Pembuatan Aplikasi Proposal Berbasis Web (E-Plannar)', tech:['Laravel','MySQL'] },
+    { year:'2017', title:'Street Lighting Information System & Android Reporting App — Sukabumi', titleId:'Updating SIM PJU & Aplikasi Android Pelaporan PJU Kabupaten Sukabumi', tech:['Laravel','MySQL','Ionic'] },
+    { year:'2017', title:'Transmigration & Manpower Application', titleId:'Pembuatan Aplikasi Transmigrasi dan Ketenagakerjaan', tech:['Laravel','MySQL'] },
+    { year:'2016', title:'Web-Based GIS Application — DPMPTSP Bogor Regency', titleId:'Pembuatan Aplikasi GIS Berbasis Web di DPMPTSP Kabupaten Bogor', tech:['PHP Framework','PostgreSQL','ArcGIS'] },
+    { year:'2015', title:'Green Open Space WebGIS Application — Bogor City', titleId:'Pembuatan Aplikasi RTH Berbasis WebGIS Kota Bogor', tech:['PHP Framework','PostgreSQL','ArcGIS'] },
+    { year:'2015', title:'Spatial Planning WebGIS & Kiosk Application — Bogor Regency', titleId:'Asisten Pembuatan Aplikasi SIT Ruang & Kios K Kabupaten Bogor', tech:['PHP Framework','ArcGIS','WordPress'] },
+    { year:'2015', title:'Materials & Equipment Management Information System', titleId:'Pembuatan SIM Manajemen Bahan dan Peralatan', tech:['PHP Framework','PostgreSQL'] },
+    { year:'2014', title:'Spatial Data Catalog — Ministry of Public Works, Jakarta', titleId:'Membuat SIM Katalog Data Spasial Kementerian Pekerjaan Umum Jakarta', tech:['PHP','PostgreSQL','jQuery','ArcGIS'] }
+  ],
+  education: [
+    { period:'2011 – 2015', institution:'STMIK Ganesha Bandung', major:'Informatics Engineering', majorId:'Teknik Informatika', level:'Bachelor — S.Kom' },
+    { period:'2008 – 2011', institution:'SMK Wikrama Bogor', major:'Vocational High School', majorId:'Sekolah Menengah Kejuruan', level:'High School' }
+  ],
+  certifications: [{ year:'2011', title:'TOEIC', description:'Test of English for International Communication' }],
+  posts: [
+    { category:'Technology', date:'March 15, 2026', title:'Modern Web Development Trends in 2026', excerpt:'Exploring the shift towards AI-first applications and the return to server-side rendering with frameworks like Remix and Next.js.' },
+    { category:'Tutorial', date:'February 28, 2026', title:'Mastering GSAP Animations in React', excerpt:'A comprehensive guide to creating high-performance smooth animations in modern React applications using the new useGSAP hook.' },
+    { category:'Coding', date:'January 10, 2026', title:'The Future of TypeScript', excerpt:'Deep dive into incoming features like context-sensitive auto-imports and enhanced pattern matching support in the next major release.' }
+  ]
+};
+
+const COPY = {
+  en: {
+    heroDesc: "I'm Muhamad Anjar Pangestu, a full stack developer from Bogor. For over a decade I have built information systems, WebGIS platforms and mobile apps for government agencies and private companies across Indonesia.",
+    aboutLead: 'I work end to end: data model, backend service, spatial layer, and the interface people actually use.',
+    aboutBody: 'My work sits mostly in the public sector — spatial planning, manpower, city assets, monitoring dashboards — where systems have to stay maintainable for years and be operated by non-technical staff. That shapes how I build: clear data models in PostgreSQL and PostGIS, predictable Laravel and Django services, and frontends in React and Next.js that stay fast on modest hardware and slow connections. Alongside that I ship Flutter and Ionic apps for field reporting, and ERP modules on Odoo.',
+    contactLead: 'Available for full time roles, contract work and consulting on WebGIS or information system projects. I usually reply within a day.'
+  },
+  id: {
+    heroDesc: 'Saya Muhamad Anjar Pangestu, full stack developer asal Bogor. Lebih dari satu dekade membangun sistem informasi, platform WebGIS, dan aplikasi mobile untuk instansi pemerintah dan perusahaan swasta di seluruh Indonesia.',
+    aboutLead: 'Saya mengerjakan end to end: model data, layanan backend, layer spasial, sampai antarmuka yang dipakai pengguna.',
+    aboutBody: 'Sebagian besar pekerjaan saya di sektor publik — tata ruang, ketenagakerjaan, aset kota, dashboard monitoring — di mana sistem harus tetap mudah dirawat bertahun-tahun dan dioperasikan staf non-teknis. Itu membentuk cara saya membangun: model data yang jelas di PostgreSQL dan PostGIS, layanan Laravel dan Django yang dapat diprediksi, serta frontend React dan Next.js yang tetap ringan di perangkat sederhana dan koneksi lambat. Selain itu saya membuat aplikasi Flutter dan Ionic untuk pelaporan lapangan, dan modul ERP di Odoo.',
+    contactLead: 'Terbuka untuk posisi full time, pekerjaan kontrak, dan konsultasi proyek WebGIS atau sistem informasi. Biasanya saya membalas dalam satu hari.'
+  }
+};
+
+function categorize(tech) {
+  const t = tech.map(x => x.toLowerCase());
+  if (t.some(x => ['geoserver','arcgis','openlayers','openlayers 4','leaflet','esri cityengine web','postgis'].includes(x))) return 'WebGIS';
+  if (t.some(x => ['flutter','react native','ionic'].includes(x))) return 'Mobile';
+  if (t.some(x => x === 'odoo')) return 'ERP';
+  return 'Web';
+}
+const IMG = { WebGIS:'public/projects/webgis.png', Mobile:'public/projects/mobile.png', ERP:'public/projects/dashboard.png', Web:'public/projects/dashboard.png' };
+
+class Component extends DCLogic {
+  state = { theme: 'light', lang: 'en', filter: 'All', expandExp: false, menuOpen: false };
+
+  componentDidMount() {
+    const reveal = n => { n.style.opacity = '1'; n.style.transform = 'none'; };
+    const nodes = Array.from(document.querySelectorAll('[data-section]'));
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { reveal(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+      this._io = io;
+      nodes.forEach(n => {
+        const box = n.getBoundingClientRect();
+        n.style.transition = 'opacity .7s ease, transform .7s cubic-bezier(.22,.8,.3,1)';
+        if (box.top < window.innerHeight) { reveal(n); return; }
+        n.style.opacity = '0';
+        n.style.transform = 'translateY(18px)';
+        io.observe(n);
+      });
+      const onScroll = () => {
+        nodes.forEach(n => {
+          if (n.style.opacity === '0' && n.getBoundingClientRect().top < window.innerHeight * 0.95) reveal(n);
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      this._onScroll = onScroll;
+    }
+    const nav = document.querySelector('[data-nav="desktop"]');
+    const burger = document.querySelector('[data-nav="burger"]');
+    const applyNav = () => {
+      const wide = window.innerWidth >= 1000;
+      if (nav) nav.style.display = wide ? 'flex' : 'none';
+      if (burger) burger.style.display = wide ? 'none' : 'grid';
+      if (wide && this.state.menuOpen) this.setState({ menuOpen: false });
+    };
+    applyNav();
+    window.addEventListener('resize', applyNav);
+    this._applyNav = applyNav;
+  }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._applyNav) window.removeEventListener('resize', this._applyNav);
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+    const copy = COPY[lang];
+    const all = RAW.experience;
+    const exp = all.map(e => ({ year: e.year, title: lang === 'id' ? e.titleId : e.title, tech: e.tech }));
+    const visibleExperience = this.state.expandExp ? exp : exp.slice(0, 10);
+
+    const projects = all.map(e => {
+      const category = categorize(e.tech);
+      return { title: lang === 'id' ? e.titleId : e.title, category, year: e.year, image: IMG[category], tags: e.tech.join(' · ') };
+    });
+    const filterNames = ['All', 'WebGIS', 'Web', 'Mobile', 'ERP'];
+    const active = this.state.filter;
+    const filters = filterNames.map(name => ({
+      label: name,
+      style: 'padding:9px 15px;border-radius:10px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;border:1px solid ' +
+        (active === name ? 'var(--accent)' : 'var(--border)') + ';background:' +
+        (active === name ? 'var(--accent)' : 'var(--surface)') + ';color:' +
+        (active === name ? '#fff' : 'var(--muted)') + ';transition:all .2s ease;',
+      select: () => this.setState({ filter: name })
+    }));
+    const visibleProjects = (active === 'All' ? projects : projects.filter(p => p.category === active)).slice(0, 9);
+
+    return {
+      theme: this.state.theme,
+      themeIcon: this.state.theme === 'dark' ? '☀' : '☾',
+      langLabel: lang === 'en' ? 'EN' : 'ID',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'dark' ? 'light' : 'dark' })),
+      toggleLang: () => this.setState(s => ({ lang: s.lang === 'en' ? 'id' : 'en' })),
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuStyle: this.state.menuOpen
+        ? 'display:block;border-top:1px solid var(--border);background:var(--bg);max-height:70vh;overflow:auto;'
+        : 'display:none;',
+      heroDesc: copy.heroDesc,
+      aboutLead: copy.aboutLead,
+      aboutBody: copy.aboutBody,
+      contactLead: copy.contactLead,
+      skills: RAW.skills,
+      visibleExperience,
+      experienceToggleLabel: this.state.expandExp ? 'Show less' : 'Show all ' + all.length + ' engagements',
+      toggleExperience: () => this.setState(s => ({ expandExp: !s.expandExp })),
+      filters,
+      visibleProjects,
+      education: RAW.education.map(e => ({ ...e, major: lang === 'id' ? e.majorId : e.major })),
+      certifications: RAW.certifications,
+      posts: RAW.posts
+    };
+  }
+}
+</script>
+</body>
+</html>

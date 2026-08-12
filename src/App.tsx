@@ -5,10 +5,11 @@ import About from './pages/About';
 import Portfolio from './pages/Portfolio';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import { PreferencesProvider } from './lib/preferences';
 
 export default function App() {
   return (
-    <HashRouter>
+    <PreferencesProvider><HashRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
@@ -18,6 +19,6 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>
-    </HashRouter>
+    </HashRouter></PreferencesProvider>
   );
 }

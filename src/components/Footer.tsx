@@ -1,56 +1,8 @@
 import { Mail } from 'lucide-react';
-import { Github, Linkedin } from './Icons';
 import { NavLink } from 'react-router';
 import { personal } from '../data';
+import { Github, Linkedin } from './Icons';
 
 export default function Footer() {
-  return (
-    <footer className="py-12 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
-        <div className="md:col-span-2">
-          <NavLink to="/" className="text-2xl font-bold tracking-tighter mb-4 inline-block">
-            Muhamad<span className="text-indigo-500">Anjar</span>
-          </NavLink>
-          <p className="text-zinc-500 dark:text-zinc-400 max-w-sm mb-6 leading-relaxed">
-            {personal.title} & {personal.subtitle} specializing in high-quality digital experiences.
-          </p>
-          <div className="flex gap-4">
-            <a href="https://github.com/muhamadanjar" className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all">
-              <Github size={20} />
-            </a>
-            <a href="#" className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
-              <Linkedin size={20} />
-            </a>
-            <a href={personal.blog} target="_blank" rel="noreferrer" className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-all">
-              <Mail size={20} />
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-bold text-zinc-900 dark:text-white mb-6">Explore</h4>
-          <ul className="space-y-4">
-            <li><NavLink to="/" className="text-zinc-500 hover:text-indigo-500 transition-colors">Home</NavLink></li>
-            <li><NavLink to="/about" className="text-zinc-500 hover:text-indigo-500 transition-colors">About</NavLink></li>
-            <li><NavLink to="/portfolio" className="text-zinc-500 hover:text-indigo-500 transition-colors">Portfolio</NavLink></li>
-            <li><NavLink to="/blog" className="text-zinc-500 hover:text-indigo-500 transition-colors">Blog</NavLink></li>
-          </ul>
-        </div>
-
-        <div className="md:col-span-1">
-          <h4 className="font-bold text-zinc-900 dark:text-white mb-6">Contact</h4>
-          <ul className="space-y-4">
-            <li className="text-zinc-500">{personal.address.regency}, {personal.address.country}</li>
-            <li><a href={`mailto:${personal.email[0]}`} className="text-zinc-500 hover:text-indigo-500 transition-colors break-all">{personal.email[0]}</a></li>
-            {/* <li className="text-zinc-500">{personal.phone[0]}</li> */}
-          </ul>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-zinc-100 dark:border-zinc-900 text-center text-sm text-zinc-500 dark:text-zinc-400">
-        <p>© {new Date().getFullYear()} {personal.name}. All rights reserved. Created with ❤️ & GSAP.</p>
-      </div>
-    </footer>
-  );
+  return <footer className="border-t border-[#dbe6f2] bg-white py-12 dark:border-[#23384b] dark:bg-[#121e2c]"><div className="site-container grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]"><div><NavLink to="/" className="inline-flex items-center gap-2.5"><span className="grid h-9 w-9 place-items-center rounded-[11px] bg-[#3e7bc1] text-sm font-extrabold text-white">MA</span><span className="text-sm font-bold">{personal.name}</span></NavLink><p className="mt-4 max-w-sm text-sm leading-6 text-[#5f7590] dark:text-[#93a9c0]">{personal.title} building considered digital experiences from Bogor, Indonesia.</p><div className="mt-5 flex gap-3"><a href="https://github.com/muhamadanjar" target="_blank" rel="noreferrer" className="rounded-lg p-2 text-[#5f7590] hover:bg-[#eaf1f9] hover:text-[#3e7bc1] dark:text-[#93a9c0] dark:hover:bg-[#182838]"><Github size={18} /></a><a href="#" aria-label="LinkedIn" className="rounded-lg p-2 text-[#5f7590] hover:bg-[#eaf1f9] hover:text-[#3e7bc1] dark:text-[#93a9c0] dark:hover:bg-[#182838]"><Linkedin size={18} /></a><a href={`mailto:${personal.email[0]}`} aria-label="Email" className="rounded-lg p-2 text-[#5f7590] hover:bg-[#eaf1f9] hover:text-[#3e7bc1] dark:text-[#93a9c0] dark:hover:bg-[#182838]"><Mail size={18} /></a></div></div><div><p className="text-sm font-bold">Explore</p><div className="mt-4 grid gap-3 text-sm text-[#5f7590] dark:text-[#93a9c0]"><NavLink to="/about">About</NavLink><NavLink to="/portfolio">Projects</NavLink><NavLink to="/blog">Writing</NavLink></div></div><div><p className="text-sm font-bold">Contact</p><address className="mt-4 not-italic text-sm leading-6 text-[#5f7590] dark:text-[#93a9c0]">{personal.address.regency}, {personal.address.country}<br /><a href={`mailto:${personal.email[0]}`} className="font-semibold text-[#3e7bc1] dark:text-[#7eaee0]">{personal.email[0]}</a></address></div></div><div className="site-container mt-10 border-t border-[#dbe6f2] pt-6 text-xs text-[#5f7590] dark:border-[#23384b] dark:text-[#93a9c0]">© {new Date().getFullYear()} {personal.name}. All rights reserved.</div></footer>;
 }
-
